@@ -1,9 +1,12 @@
 ## Welcome!
-This is a Command Line Interface application that allows you to run queries on a  fake dataset of student/school data. 
+This is a Command Line Interface application that allows you to run queries on a fake dataset of student/school data. 
 
 #### Getting Started
 
- TODO need instructions on getting data into DB and establishing DB connection
+ TODO need instructions on getting data into DB and establishing DB connection -> insert these somewhere after step 3.
+    change username and password in `index.js` (careful not to save this anywhere public, like Github.)
+    first, run the scripts in `schema.sql`. Second, run the scripts in `dataLoad.sql`. You can do this in the MySQL command line client or in MySQL Workbench.  
+
 
 1. Download this directory and open in your terminal.
 2. You must have [Node.js](https://nodejs.org/) installed.
