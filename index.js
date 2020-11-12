@@ -40,7 +40,7 @@ function runSearch() {
         .then(function (answer) {
             switch (answer.action) {
                 case "Print the 3 most commonly used languages and the count of parents for each language.":
-                    multiSearch();
+                    langFrequency();
                     break;
 
                 case "Print a list of students (student_id, first_name, last_name) who do not have a cell phone number.":
@@ -94,12 +94,12 @@ function artistSearch() {
         });
 }
 
-function multiSearch() {
-    var query = "SELECT artist FROM top5000 GROUP BY artist HAVING count(*) > 1";
+function langFrequency() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i].artist);
+            console.log(res[i]);
         }
         runSearch();
     });

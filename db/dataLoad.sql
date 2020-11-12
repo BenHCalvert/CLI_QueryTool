@@ -1,33 +1,33 @@
--- loading data
-LOAD DATA INFILE '/Users/ben/Documents/Code/Interviews/ParentSquare/Private/parents.csv' 
+-- Scripts to load data from CSV files. Must replace with filepath to file location on your device.
+LOAD DATA INFILE 'ENTER YOUR FILE PATH HERE/parents.csv' 
 INTO TABLE parents 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '/Users/ben/Documents/Code/Interviews/ParentSquare/Private/rosters.csv' 
+LOAD DATA INFILE 'ENTER YOUR FILE PATH HERE/rosters.csv' 
 INTO TABLE rosters 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '/Users/ben/Documents/Code/Interviews/ParentSquare/Private/sections.csv' 
+LOAD DATA INFILE 'ENTER YOUR FILE PATH HERE/sections.csv' 
 INTO TABLE sections 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '/Users/ben/Documents/Code/Interviews/ParentSquare/Private/staff.csv' 
+LOAD DATA INFILE 'ENTER YOUR FILE PATH HERE/staff.csv' 
 INTO TABLE staff 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '/Users/ben/Documents/Code/Interviews/ParentSquare/Private/students.csv' 
+LOAD DATA INFILE 'ENTER YOUR FILE PATH HERE/students.csv' 
 INTO TABLE students 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'

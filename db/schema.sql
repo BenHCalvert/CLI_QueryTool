@@ -1,10 +1,9 @@
 -- create and use the db
-DROP DATABASE IF EXISTS ps_db;
 CREATE DATABASE IF NOT EXISTS ps_db;
 USE ps_db;
 
 -- creating tables
-CREATE TABLE parents (
+CREATE TABLE IF NOT EXISTS parents (
     school_id INT,
     student_id INT,
     firstName VARCHAR(255),
