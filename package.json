@@ -1,0 +1,20 @@
+{
+  "name": "parentsquare",
+  "version": "1.0.0",
+  "description": "ParentSquare CLI Query Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenHCalvert/CLI_QueryTool.git"
+  },
+  "author": "Ben Calvert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenHCalvert/CLI_QueryTool/issues"
+  },
+  "homepage": "https://github.com/BenHCalvert/CLI_QueryTool#readme"
+}
