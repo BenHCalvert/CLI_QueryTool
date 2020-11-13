@@ -1,6 +1,11 @@
 ## Welcome!
 This is a command line application that allows you to run queries on a fake dataset of student/school data.
 
+---
+
+<div align="center"> 📚 📓 📓 📚 </div>
+
+---
 
 ### Getting Started
 
@@ -11,7 +16,7 @@ This is a command line application that allows you to run queries on a fake data
 5. Run the scripts in `db/schema.sql`. Second, change the filepath to match the location of your .csv files and run the scripts in `db/dataLoad.sql`npm star. You can do this in the MySQL command line client or in MySQL Workbench. These will create the database, tables and import our dataset.
 6. Run `npm install` in your terminal to install all necessary node packages.
 7. Now that you have all of that in place, You're ready to go! **Start the app** with `npm start`.'
-7. Use your arrow keys and return to select an option. All responses will be shown as JSON in the terminal.
+8. Use your arrow keys and return to select an option. All responses will be shown as JSON in the terminal.
 
 ---
 
