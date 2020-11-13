@@ -28,7 +28,7 @@ This is a command line application that allows you to run queries on a fake data
 
 - This application was built with Node version 12.16.3 & MySQL version 8.0.22.
 - The application logic and database queries can be seen in index.js
-- When mapping home languages to IS0-639-1 codes, Spanish returns NULL because the dataset differentiates between Castilian & Catalan. We could fix this by updating that database row.
+- When mapping home languages to IS0-639-1 codes, Spanish returns NULL because the dataset differentiates between Castilian & Catalan. We could change this to get a result of 'es' by updating that database row. In this case, I chose not to alter any of the data.
 
 ---
 
@@ -76,4 +76,4 @@ Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term
 
 **Result:**  
 Workbench: ![Picture of MySql results for Query 6](/assets/pictures/bonus.png)  
-Command Line: ![Picture of terminal results for Query 6](/assets/pictures/BonusTerm.png)
+Command Line: ![Picture of terminal results for Query 6](/assets/pictures/bonusTerm.png)
