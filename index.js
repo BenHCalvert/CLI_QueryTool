@@ -44,7 +44,7 @@ function runSearch() {
                     break;
 
                 case "Print a list of students (student_id, first_name, last_name) who do not have a cell phone number.":
-                    rangeSearch();
+                    noPhoneSearch();
                     break;
 
                 case "Print a list of students (student_id, first_name, last_name) who are enrolled in a section with a course_name of Physics 9.":
@@ -94,6 +94,7 @@ function artistSearch() {
         });
 }
 
+// Function that searches for the top 3 most freqeunt home languages for parents
 function langFrequency() {
     var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
     connection.query(query, function (err, res) {
@@ -104,6 +105,19 @@ function langFrequency() {
         runSearch();
     });
 }
+
+// Function that returns students who do not have a cell phone number
+function noPhoneSearch() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
 
 function rangeSearch() {
     inquirer
