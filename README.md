@@ -75,5 +75,5 @@ Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term
 **Query:** `SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;`
 
 **Result:**  
-Workbench: ![Picture of MySql results for Query 6](/assets/pictures/bonus.png)  
-Command Line: ![Picture of terminal results for Query 6](/assets/pictures/bonusTerm.png)
+Workbench: ![Picture of MySql results for Bonus 1](/assets/pictures/bonus.png)  
+Command Line: ![Picture of terminal results for Bonus 1](/assets/pictures/bonusTerm.png)
