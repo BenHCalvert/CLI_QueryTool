@@ -30,13 +30,21 @@ function runSearch() {
             message: "What would you like to do?",
             choices: [
                 "Print the 3 most commonly used languages and the count of parents for each language.",
+                new inquirer.Separator(),
                 "Print a list of students (student_id, first_name, last_name) who do not have a cell phone number.",
+                new inquirer.Separator(),
                 "Print a list of students (student_id, first_name, last_name) who are enrolled in a section with a course_name of Physics 9.",
+                new inquirer.Separator(),
                 "Print a list of students (student_id, first_name, last_name) who do not have parents listed in the parents.csv or have parents with no contact information.",
+                new inquirer.Separator(),
                 "Print a list of sections (section_id, course_name) who do not have any students enrolled.",
+                new inquirer.Separator(),
                 "Print a list of sections and the students in each section (section_id, course_name, student_ids).",
+                new inquirer.Separator(),
                 "Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.",
-                "exit"
+                new inquirer.Separator(),
+                "exit",
+                new inquirer.Separator()
             ]
         })
         .then(function (answer) {
@@ -71,7 +79,8 @@ function runSearch() {
 
 
                 case "exit":
-                    connection.end();
+                    console.log('Program is now ending. Restart with node start.')
+                    connection.end();                    
                     break;
             }
         });
