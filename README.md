@@ -41,5 +41,5 @@ This is a Command Line Interface application that allows you to run queries on a
 
 **Query:** `SELECT sections.section_id, sections.course_name, students.student_id FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id order by course_name ASC;`
 
-**Result:** ![Picture of MySql Results for Query 6](/assets/pictures/Q6.png width=150x)
+**Result:** ![Picture of MySql Results for Query 6](/assets/pictures/Q6.png width=150x) <img alt="Picture of MySql Results for Query 6"src="/assets/pictures/Q6.png width=150x" width="125">
 
