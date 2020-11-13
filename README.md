@@ -30,23 +30,31 @@ This is a command line application that allows you to run queries on a fake data
 
 **Query:** `SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;`
 
-**Result:** ![Picture of MySql Results for Query 1](/assets/pictures/Q1.png)
+**Result:**
+Workbench ![Picture of MySql results for Query 1](/assets/pictures/Q1.png)
+Command Line: [Picture of terminal results for Query 1](/assets/pictures/Q1Term.png)
 
 ##### Print a list of students who do not have a cell phone number.
 
 **Query:** `SELECT student_id, firstName, lastName FROM students WHERE cellphone IS NULL OR cellphone = '' ORDER BY lastName ASC;`
 
-**Result:** ![Picture of MySql Results for Query 2](/assets/pictures/Q2.png)
+**Result:**
+Workbench: ![Picture of MySql results for Query 2](/assets/pictures/Q2.png)
+Command Line: [Picture of terminal results for Query 2](/assets/pictures/Q2Term.png)
 
 ##### Print a list of students who are enrolled in a section with a course_name of Physics 9.
 
 **Query:** `SELECT DISTINCT students.student_id, students.firstName, students.lastName FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id WHERE sections.course_name='Physics 9' ORDER BY student_id ASC;`
 
-**Result:** ![Picture of MySql Results for Query 3](/assets/pictures/Q3.png)
+**Result:**
+Workbench: ![Picture of MySql results for Query 3](/assets/pictures/Q3.png)
+Command Line: [Picture of terminal results for Query 3](/assets/pictures/Q3Term.png)
 
 ##### Print a list of sections and the students in each section.
 
 **Query:** `SELECT sections.section_id, sections.course_name, students.student_id FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id order by course_name ASC;`
 
-**Result:** ![Picture of MySql Results for Query 6](/assets/pictures/Q6.png)
+**Result:**
+Workbench: ![Picture of MySql results for Query 6](/assets/pictures/Q6.png)
+Command Line: [Picture of terminal results for Query 6](/assets/pictures/Q6Term.png)
 

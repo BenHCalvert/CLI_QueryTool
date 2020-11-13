@@ -47,3 +47,8 @@ CREATE TABLE IF NOT EXISTS students (
     studentEmail VARCHAR(255),
     cellphone VARCHAR(255)
 );
+
+CREATE TABLE IF NOT EXISTS langCodes (
+    alphaCode VARCHAR(255),
+    engName VARCHAR(255)
+);
