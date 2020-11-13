@@ -1,25 +1,8 @@
-var mysql = require("mysql");
-var inquirer = require("inquirer");
+const inquirer = require("inquirer");
+const connection = require("./config/connection.js");
 
-// Database connection info. You may need to edit with your credentials and port info.
-var connection = mysql.createConnection({
-    host: "localhost",
-
-    // Your port; if not 3306
-    port: 3306,
-
-    // Your username
-    user: "root",
-
-    // Your password
-    password: "rootroot",
-    database: "ps_db"
-});
-
-connection.connect(function (err) {
-    if (err) throw err;
-    runSearch();
-});
+// program starts with this call
+runSearch();
 
 // Inquirer asks this list of questions @ program start
 function runSearch() {
@@ -85,6 +68,10 @@ function runSearch() {
             }
         });
 }
+
+// ****
+// Functions that run queries
+// ****
 
 // Function searches for the top 3 most freqeunt home languages for parents
 function langFrequency() {
