@@ -33,3 +33,11 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+-- DATA SOURCE: https://datahub.io/core/language-codes/r/language-codes.csv
+LOAD DATA INFILE 'ENTER YOUR FILE PATH HERE/language-codes.csv' 
+INTO TABLE langCodes 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 0 ROWS;
