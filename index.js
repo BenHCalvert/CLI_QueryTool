@@ -26,6 +26,8 @@ function runSearch() {
                 new inquirer.Separator(),
                 "Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.",
                 new inquirer.Separator(),
+                "Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1",
+                new inquirer.Separator(),
                 "exit",
                 new inquirer.Separator()
             ]
@@ -58,6 +60,10 @@ function runSearch() {
 
                 case "Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.":
                     activeTeachers();
+                    break;
+                
+                case "Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1":
+                    langCode();
                     break;
 
 
@@ -163,94 +169,106 @@ function activeTeachers() {
     });
 }
 
-function artistSearch() {
-    inquirer
-        .prompt({
-            name: "artist",
-            type: "input",
-            message: "What artist would you like to search for?"
-        })
-        .then(function (answer) {
-            var query = "SELECT position, song, year FROM top5000 WHERE ?";
-            connection.query(query, { artist: answer.artist }, function (err, res) {
-                if (err) throw err;
-                for (var i = 0; i < res.length; i++) {
-                    console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
-                }
-                runSearch();
-            });
-        });
+// Print a list of languages spoken by parents and the corresponding ISO-639-1 code. Spanish returns NULL because the dataset differentiates between Castilian & Catalan
+function langCode() {
+    var query = "SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(JSON.stringify(res[i]));
+        }
+        runSearch();
+    });
 }
 
-function rangeSearch() {
-    inquirer
-        .prompt([
-            {
-                name: "start",
-                type: "input",
-                message: "Enter starting position: ",
-                validate: function (value) {
-                    if (isNaN(value) === false) {
-                        return true;
-                    }
-                    return false;
-                }
-            },
-            {
-                name: "end",
-                type: "input",
-                message: "Enter ending position: ",
-                validate: function (value) {
-                    if (isNaN(value) === false) {
-                        return true;
-                    }
-                    return false;
-                }
-            }
-        ])
-        .then(function (answer) {
-            var query = "SELECT position,song,artist,year FROM top5000 WHERE position BETWEEN ? AND ?";
-            connection.query(query, [answer.start, answer.end], function (err, res) {
-                if (err) throw err;
-                for (var i = 0; i < res.length; i++) {
-                    console.log(
-                        "Position: " +
-                        res[i].position +
-                        " || Song: " +
-                        res[i].song +
-                        " || Artist: " +
-                        res[i].artist +
-                        " || Year: " +
-                        res[i].year
-                    );
-                }
-                runSearch();
-            });
-        });
-}
+// function artistSearch() {
+//     inquirer
+//         .prompt({
+//             name: "artist",
+//             type: "input",
+//             message: "What artist would you like to search for?"
+//         })
+//         .then(function (answer) {
+//             var query = "SELECT position, song, year FROM top5000 WHERE ?";
+//             connection.query(query, { artist: answer.artist }, function (err, res) {
+//                 if (err) throw err;
+//                 for (var i = 0; i < res.length; i++) {
+//                     console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
+//                 }
+//                 runSearch();
+//             });
+//         });
+// }
 
-function songSearch() {
-    inquirer
-        .prompt({
-            name: "song",
-            type: "input",
-            message: "What song would you like to look for?"
-        })
-        .then(function (answer) {
-            console.log(answer.song);
-            connection.query("SELECT * FROM top5000 WHERE ?", { song: answer.song }, function (err, res) {
-                if (err) throw err;
-                console.log(
-                    "Position: " +
-                    res[0].position +
-                    " || Song: " +
-                    res[0].song +
-                    " || Artist: " +
-                    res[0].artist +
-                    " || Year: " +
-                    res[0].year
-                );
-                runSearch();
-            });
-        });
-}
+// function rangeSearch() {
+//     inquirer
+//         .prompt([
+//             {
+//                 name: "start",
+//                 type: "input",
+//                 message: "Enter starting position: ",
+//                 validate: function (value) {
+//                     if (isNaN(value) === false) {
+//                         return true;
+//                     }
+//                     return false;
+//                 }
+//             },
+//             {
+//                 name: "end",
+//                 type: "input",
+//                 message: "Enter ending position: ",
+//                 validate: function (value) {
+//                     if (isNaN(value) === false) {
+//                         return true;
+//                     }
+//                     return false;
+//                 }
+//             }
+//         ])
+//         .then(function (answer) {
+//             var query = "SELECT position,song,artist,year FROM top5000 WHERE position BETWEEN ? AND ?";
+//             connection.query(query, [answer.start, answer.end], function (err, res) {
+//                 if (err) throw err;
+//                 for (var i = 0; i < res.length; i++) {
+//                     console.log(
+//                         "Position: " +
+//                         res[i].position +
+//                         " || Song: " +
+//                         res[i].song +
+//                         " || Artist: " +
+//                         res[i].artist +
+//                         " || Year: " +
+//                         res[i].year
+//                     );
+//                 }
+//                 runSearch();
+//             });
+//         });
+// }
+
+// function songSearch() {
+//     inquirer
+//         .prompt({
+//             name: "song",
+//             type: "input",
+//             message: "What song would you like to look for?"
+//         })
+//         .then(function (answer) {
+//             console.log(answer.song);
+//             connection.query("SELECT * FROM top5000 WHERE ?", { song: answer.song }, function (err, res) {
+//                 if (err) throw err;
+//                 console.log(
+//                     "Position: " +
+//                     res[0].position +
+//                     " || Song: " +
+//                     res[0].song +
+//                     " || Artist: " +
+//                     res[0].artist +
+//                     " || Year: " +
+//                     res[0].year
+//                 );
+//                 runSearch();
+//             });
+//         });
+// }

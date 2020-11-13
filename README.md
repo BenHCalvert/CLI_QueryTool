@@ -27,7 +27,8 @@ This is a command line application that allows you to run queries on a fake data
 ### Other Notes
 
 - This application was built with Node version 12.16.3 & MySQL version 8.0.22.
-- The application logic and database queries can be seen in index.js 
+- The application logic and database queries can be seen in index.js
+- When mapping home languages to IS0-639-1 codes, Spanish returns NULL because the dataset differentiates between Castilian & Catalan. We could fix this by updating that database row.
 
 ---
 
@@ -42,7 +43,7 @@ This is a command line application that allows you to run queries on a fake data
 **Query:** `SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;`
 
 **Result:**  
-Workbench ![Picture of MySql results for Query 1](/assets/pictures/Q1.png)  
+Workbench: ![Picture of MySql results for Query 1](/assets/pictures/Q1.png)  
 Command Line: ![Picture of terminal results for Query 1](/assets/pictures/Q1Term.png)  
 
 ##### Print a list of students who do not have a cell phone number.
@@ -68,3 +69,11 @@ Command Line: ![Picture of terminal results for Query 3](/assets/pictures/Q3Term
 **Result:**  
 Workbench: ![Picture of MySql results for Query 6](/assets/pictures/Q6.png)  
 Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term.png)
+
+##### Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1.
+
+**Query:** `SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;`
+
+**Result:**  
+Workbench: ![Picture of MySql results for Query 6](/assets/pictures/bonus.png)  
+Command Line: ![Picture of terminal results for Query 6](/assets/pictures/BonusTerm.png)
