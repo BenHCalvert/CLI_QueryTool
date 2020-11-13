@@ -1,7 +1,7 @@
 ## Welcome!
+<div align="center"> 📚 🏫 📓 📚 </div>
 This is a Command Line Interface application that allows you to run queries on a fake dataset of student/school data. 
 
-<div align="center"> 📚 🏫 📓 📚 </div>
 
 #### Getting Started
 

@@ -90,7 +90,7 @@ function langFrequency() {
 
 // Function returns students who do not have a cell phone number
 function noPhoneSearch() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    var query = "SELECT student_id, firstName, lastName FROM students WHERE cellphone IS NULL OR cellphone = '' ORDER BY lastName ASC;";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
@@ -99,7 +99,6 @@ function noPhoneSearch() {
         runSearch();
     });
 }
-
 
 // Function returns students enrolled in Physics 9
 function physicsSearch() {
