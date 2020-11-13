@@ -32,7 +32,7 @@ This is a command line application that allows you to run queries on a fake data
 
 **Result:**
 Workbench ![Picture of MySql results for Query 1](/assets/pictures/Q1.png)
-Command Line: [Picture of terminal results for Query 1](/assets/pictures/Q1Term.png)
+Command Line: ![Picture of terminal results for Query 1](/assets/pictures/Q1Term.png)
 
 ##### Print a list of students who do not have a cell phone number.
 
@@ -40,7 +40,7 @@ Command Line: [Picture of terminal results for Query 1](/assets/pictures/Q1Term.
 
 **Result:**
 Workbench: ![Picture of MySql results for Query 2](/assets/pictures/Q2.png)
-Command Line: [Picture of terminal results for Query 2](/assets/pictures/Q2Term.png)
+Command Line: ![Picture of terminal results for Query 2](/assets/pictures/Q2Term.png)
 
 ##### Print a list of students who are enrolled in a section with a course_name of Physics 9.
 
@@ -48,7 +48,7 @@ Command Line: [Picture of terminal results for Query 2](/assets/pictures/Q2Term.
 
 **Result:**
 Workbench: ![Picture of MySql results for Query 3](/assets/pictures/Q3.png)
-Command Line: [Picture of terminal results for Query 3](/assets/pictures/Q3Term.png)
+Command Line: ![Picture of terminal results for Query 3](/assets/pictures/Q3Term.png)
 
 ##### Print a list of sections and the students in each section.
 
@@ -56,5 +56,5 @@ Command Line: [Picture of terminal results for Query 3](/assets/pictures/Q3Term.
 
 **Result:**
 Workbench: ![Picture of MySql results for Query 6](/assets/pictures/Q6.png)
-Command Line: [Picture of terminal results for Query 6](/assets/pictures/Q6Term.png)
+Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term.png)
 
