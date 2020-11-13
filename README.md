@@ -14,4 +14,12 @@ This is a Command Line Interface application that allows you to run queries on a
 2. You must have [Node.js](https://nodejs.org/) installed. This app was built with v12.16.3.
 3. You must have [MySQL](https://dev.mysql.com/downloads/mysql) installed. Optionally, you can also install [MySQL workbench](https://dev.mysql.com/downloads/workbench/) as a MySQL GUI.
 3. run `npm install` in your terminal to install all necessary node packages.
-4. Now that you have all of that in place, You're ready to go! **Start the app** with `node start`.
+4. Now that you have all of that in place, You're ready to go! **Start the app** with `node start`.'
+
+
+#### Examples & Results
+
+###### Print the 3 most commonly used languages and the count of parents for each language.
+
+**Query:** `SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;`
+**Result:** ![Picture of MySql Results for Query 1](/assets/pictures/Q1.png)

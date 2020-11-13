@@ -116,7 +116,7 @@ function physicsSearch() {
 
 // Function returns students without registered guardian or guardian w/o contact info
 function missingHouseholdSearch() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    var query = "";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
@@ -128,7 +128,7 @@ function missingHouseholdSearch() {
 
 // Prints list of sections w/o students enrolled
 function emptySectionSearch() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    var query = "";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
@@ -152,7 +152,7 @@ function rosterBuilder() {
 
 // Print list of staff who are connected to a section
 function activeTeachers() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    var query = "";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
