@@ -1,6 +1,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+// Database connection info. You may need to edit with your credentials and port info.
 var connection = mysql.createConnection({
     host: "localhost",
 
@@ -20,6 +21,7 @@ connection.connect(function (err) {
     runSearch();
 });
 
+// Inquirer asks this list of questions @ program start
 function runSearch() {
     inquirer
         .prompt({
@@ -75,7 +77,6 @@ function runSearch() {
         });
 }
 
-
 // Function searches for the top 3 most freqeunt home languages for parents
 function langFrequency() {
     var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
@@ -102,7 +103,7 @@ function noPhoneSearch() {
 
 // Function returns students enrolled in Physics 9
 function physicsSearch() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    var query = "SELECT DISTINCT students.student_id, students.firstName, students.lastName FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id WHERE sections.course_name='Physics 9' ORDER BY student_id ASC;";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
@@ -139,7 +140,7 @@ function emptySectionSearch() {
 
 // Prints list of sections and students in those sections
 function rosterBuilder() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    var query = "SELECT sections.section_id, sections.course_name, students.student_id FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id order by course_name ASC;";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
