@@ -83,7 +83,12 @@ function langFrequency() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
+            // console.log(
+            //     "Language: " +
+            //     res[i].language +
+            //     " || Parent Count: " +
+            //     res[i].COUNT );
         }
         runSearch();
     });
@@ -95,7 +100,7 @@ function noPhoneSearch() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
@@ -107,7 +112,7 @@ function physicsSearch() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
@@ -120,7 +125,7 @@ function missingHouseholdSearch() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
@@ -132,7 +137,7 @@ function emptySectionSearch() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
@@ -144,7 +149,7 @@ function rosterBuilder() {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
@@ -152,11 +157,11 @@ function rosterBuilder() {
 
 // Print list of staff who are connected to a section
 function activeTeachers() {
-    var query = "";
+    var query = "SELECT staff.staff_id, staff.firstName, staff.lastName FROM staff INNER JOIN sections ON staff.staff_id=sections.staff_id;";
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
