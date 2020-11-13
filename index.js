@@ -48,23 +48,23 @@ function runSearch() {
                     break;
 
                 case "Print a list of students (student_id, first_name, last_name) who are enrolled in a section with a course_name of Physics 9.":
-                    songSearch();
+                    physicsSearch();
                     break;
 
                 case "Print a list of students (student_id, first_name, last_name) who do not have parents listed in the parents.csv or have parents with no contact information.":
-                    songSearch();
+                    missingHouseholdSearch();
                     break;
 
                 case "Print a list of sections (section_id, course_name) who do not have any students enrolled.":
-                    songSearch();
+                    emptySectionSearch();
                     break;
 
                 case "Print a list of sections and the students in each section (section_id, course_name, student_ids).":
-                    songSearch();
+                    rosterBuilder();
                     break;
 
                 case "Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.":
-                    songSearch();
+                    activeTeachers();
                     break;
 
 
@@ -73,6 +73,93 @@ function runSearch() {
                     break;
             }
         });
+}
+
+
+// Function searches for the top 3 most freqeunt home languages for parents
+function langFrequency() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
+// Function returns students who do not have a cell phone number
+function noPhoneSearch() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
+
+// Function returns students enrolled in Physics 9
+function physicsSearch() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
+
+// Function returns students without registered guardian or guardian w/o contact info
+function missingHouseholdSearch() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
+// Prints list of sections w/o students enrolled
+function emptySectionSearch() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
+// Prints list of sections and students in those sections
+function rosterBuilder() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
+}
+
+// Print list of staff who are connected to a section
+function activeTeachers() {
+    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log(res[i]);
+        }
+        runSearch();
+    });
 }
 
 function artistSearch() {
@@ -93,31 +180,6 @@ function artistSearch() {
             });
         });
 }
-
-// Function that searches for the top 3 most freqeunt home languages for parents
-function langFrequency() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
-    connection.query(query, function (err, res) {
-        if (err) throw err;
-        for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
-        }
-        runSearch();
-    });
-}
-
-// Function that returns students who do not have a cell phone number
-function noPhoneSearch() {
-    var query = "SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;";
-    connection.query(query, function (err, res) {
-        if (err) throw err;
-        for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
-        }
-        runSearch();
-    });
-}
-
 
 function rangeSearch() {
     inquirer
