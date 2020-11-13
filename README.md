@@ -18,9 +18,11 @@ This is a Command Line Interface application that allows you to run queries on a
 
 
 
-
+---
 
 <div align="center"> 📚 🏫 📓 📚 </div>
+
+---
 
 #### Examples & Results
 
