@@ -1,3 +1,4 @@
+// Using Inquirer.js to prompt question in the terminal. https://www.npmjs.com/package/inquirer
 const inquirer = require("inquirer");
 const connection = require("./config/connection.js");
 
@@ -76,11 +77,11 @@ function runSearch() {
                     runQuery(query);
                     break;
 
-                // Not fully confident in this query
                 case "Check if any phone numbers appear in two or more of these files: students.csv, staff.csv, and parents.csv.":
-                    var query = "SELECT cellphone FROM students INNER JOIN staff on students.cellphone=staff.mobile UNION SELECT staff.mobile FROM staff INNER JOIN parents on staff.mobile=parents.mobile ";
+                    // Not fully confident in this query
+                    var query = "SELECT cellphone FROM students INNER JOIN staff on students.cellphone=staff.mobile UNION SELECT staff.mobile FROM staff INNER JOIN parents on staff.mobile=parents.mobile;";
                     runQuery(query);
-                    break;                    
+                    break;
 
                 case "exit":
                     console.log('Program is now ending. Restart with npm start.')
@@ -95,6 +96,7 @@ function runQuery(query) {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
+            // console.log response as JSON
             console.log(JSON.stringify(res[i]));
         }
         runSearch();

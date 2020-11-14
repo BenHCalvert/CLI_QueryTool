@@ -38,7 +38,7 @@ This is a command line application that allows you to run queries on a fake data
 
 ### Examples & Results
 
-##### Print the 3 most commonly used languages and the count of parents for each language.
+##### 1. Print the 3 most commonly used languages and the count of parents for each language.
 
 **Query:** `SELECT language, COUNT(*) FROM parents GROUP BY language ORDER BY COUNT(*) DESC LIMIT 3;`
 
@@ -46,7 +46,7 @@ This is a command line application that allows you to run queries on a fake data
 Workbench: ![Picture of MySql results for Query 1](/assets/pictures/Q1.png)  
 Command Line: ![Picture of terminal results for Query 1](/assets/pictures/Q1Term.png)  
 
-##### Print a list of students who do not have a cell phone number.
+##### 2. Print a list of students who do not have a cell phone number.
 
 **Query:** `SELECT student_id, firstName, lastName FROM students WHERE cellphone IS NULL OR cellphone = '' ORDER BY lastName ASC;`
 
@@ -54,15 +54,22 @@ Command Line: ![Picture of terminal results for Query 1](/assets/pictures/Q1Term
 Workbench: ![Picture of MySql results for Query 2](/assets/pictures/Q2.png)  
 Command Line: ![Picture of terminal results for Query 2](/assets/pictures/Q2Term.png)  
 
-##### Print a list of students who are enrolled in a section with a course_name of Physics 9.
+##### 3. Print a list of students who are enrolled in a section with a course_name of Physics 9.
 
 **Query:** `SELECT DISTINCT students.student_id, students.firstName, students.lastName FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id WHERE sections.course_name='Physics 9' ORDER BY student_id ASC;`
 
 **Result:**    
 Workbench: ![Picture of MySql results for Query 3](/assets/pictures/Q3.png)    
 Command Line: ![Picture of terminal results for Query 3](/assets/pictures/Q3Term.png)  
+  
+##### 5. Print a list of sections (section_id, course_name) who do not have any students enrolled.
 
-##### Print a list of sections and the students in each section.
+**Query** `SELECT DISTINCT section_id, course_name FROM sections WHERE NOT EXISTS (SELECT * FROM rosters WHERE rosters.section_id = sections.section_id);`
+
+**Result**  
+There aren't any sections that don't have students enrolled. There is 1 course in rosters (150_49) that is not in sections.
+
+##### 6. Print a list of sections and the students in each section.  
 
 **Query:** `SELECT sections.section_id, sections.course_name, students.student_id FROM sections INNER JOIN rosters ON sections.section_id=rosters.section_id INNER JOIN students ON students.student_id=rosters.student_id order by course_name ASC;`
 
@@ -70,26 +77,27 @@ Command Line: ![Picture of terminal results for Query 3](/assets/pictures/Q3Term
 Workbench: ![Picture of MySql results for Query 6](/assets/pictures/Q6.png)  
 Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term.png)
 
-##### Print a list of sections (section_id, course_name) who do not have any students enrolled.
-
-**Query** `SELECT DISTINCT section_id, course_name FROM sections WHERE NOT EXISTS (SELECT * FROM rosters WHERE rosters.section_id = sections.section_id);`
-
-**Result**  
-There aren't any sections that don't have students enrolled. There is 1 course in rosters (150_49) that is not in sections.
-
-##### Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.
+##### 7. Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.
 
 **Query** `SELECT staff.staff_id, staff.firstName, staff.lastName FROM staff INNER JOIN sections ON staff.staff_id=sections.staff_id;`
 
 **Result**  
 There are no staff assigned to sections  
 
-##### Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1.
+##### Bonus 1. Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1.
 
 **Query:** `SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;`
 
 **Result:**  
 Workbench: ![Picture of MySql results for Bonus 1](/assets/pictures/bonus.png)  
-Command Line: ![Picture of terminal results for Bonus 1](/assets/pictures/BonusTerm.png)  
+Command Line: ![Picture of terminal results for Bonus 1](/assets/pictures/BonusTerm.png)
+
+##### Bonus 2. Check if any phone numbers appear in two or more of these files: students.csv, staff.csv, and parents.csv.
+
+**Query:** `SELECT cellphone FROM students INNER JOIN staff on students.cellphone=staff.mobile UNION SELECT staff.mobile FROM staff INNER JOIN parents on staff.mobile=parents.mobile;`
+
+**Result:**  
+Workbench: ![Picture of MySql results for Bonus 2](/assets/pictures/bonus2.png)  
+Command Line: ![Picture of terminal results for Bonus 2](/assets/pictures/bonus2Term.png) 
 
 
