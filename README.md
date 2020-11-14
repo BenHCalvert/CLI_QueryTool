@@ -70,6 +70,20 @@ Command Line: ![Picture of terminal results for Query 3](/assets/pictures/Q3Term
 Workbench: ![Picture of MySql results for Query 6](/assets/pictures/Q6.png)  
 Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term.png)
 
+##### Print a list of sections (section_id, course_name) who do not have any students enrolled.
+
+**Query** `SELECT DISTINCT section_id, course_name FROM sections WHERE NOT EXISTS (SELECT * FROM rosters WHERE rosters.section_id = sections.section_id);`
+
+**Result**  
+There aren't any sections that don't have students enrolled. There is 1 course in rosters (150_49) that is not in sections.
+
+##### Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.
+
+**Query** `SELECT staff.staff_id, staff.firstName, staff.lastName FROM staff INNER JOIN sections ON staff.staff_id=sections.staff_id;`
+
+**Result**  
+There are no staff assigned to sections  
+
 ##### Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1.
 
 **Query:** `SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;`

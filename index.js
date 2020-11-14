@@ -54,6 +54,8 @@ function runSearch() {
                     break;
 
                 case "Print a list of sections (section_id, course_name) who do not have any students enrolled.":
+                    // still don't have 100% confidence in this one. Difficult because either sections or rosters could have section_ids not included in the other table so must check both against each other.
+                    var query = "SELECT DISTINCT section_id, course_name FROM sections WHERE NOT EXISTS (SELECT * FROM rosters WHERE rosters.section_id = sections.section_id);"
                     runQuery(query);
                     break;
 
