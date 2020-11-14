@@ -17,8 +17,8 @@ function runSearch() {
                 "Print a list of students (student_id, first_name, last_name) who do not have a cell phone number.",
                 new inquirer.Separator(),
                 "Print a list of students (student_id, first_name, last_name) who are enrolled in a section with a course_name of Physics 9.",
-                new inquirer.Separator(),
-                "Print a list of students (student_id, first_name, last_name) who do not have parents listed in the parents.csv or have parents with no contact information.",
+                // new inquirer.Separator(),
+                // "Print a list of students (student_id, first_name, last_name) who do not have parents listed in the parents.csv or have parents with no contact information.",
                 new inquirer.Separator(),
                 "Print a list of sections (section_id, course_name) who do not have any students enrolled.",
                 new inquirer.Separator(),
@@ -27,6 +27,8 @@ function runSearch() {
                 "Print a list of staff members (staff_id, first_name, last_name) who are connected to a section.",
                 new inquirer.Separator(),
                 "Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1",
+                new inquirer.Separator(),
+                "Check if any phone numbers appear in two or more of these files: students.csv, staff.csv, and parents.csv.",
                 new inquirer.Separator(),
                 "exit",
                 new inquirer.Separator()
@@ -49,12 +51,12 @@ function runSearch() {
                     runQuery(query);
                     break;
 
-                case "Print a list of students (student_id, first_name, last_name) who do not have parents listed in the parents.csv or have parents with no contact information.":
-                    runQuery(query);
-                    break;
+                // case "Print a list of students (student_id, first_name, last_name) who do not have parents listed in the parents.csv or have parents with no contact information.":
+                //     runQuery(query);
+                //     break;
 
                 case "Print a list of sections (section_id, course_name) who do not have any students enrolled.":
-                    // still don't have 100% confidence in this one. Difficult because either sections or rosters could have section_ids not included in the other table so must check both against each other.
+                    // Not fully confident in this query. Difficult because either sections or rosters could have section_ids not included in the other table so must check both against each other.
                     var query = "SELECT DISTINCT section_id, course_name FROM sections WHERE NOT EXISTS (SELECT * FROM rosters WHERE rosters.section_id = sections.section_id);"
                     runQuery(query);
                     break;
@@ -73,6 +75,12 @@ function runSearch() {
                     var query = "SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;";
                     runQuery(query);
                     break;
+
+                // Not fully confident in this query
+                case "Check if any phone numbers appear in two or more of these files: students.csv, staff.csv, and parents.csv.":
+                    var query = "SELECT cellphone FROM students INNER JOIN staff on students.cellphone=staff.mobile UNION SELECT staff.mobile FROM staff INNER JOIN parents on staff.mobile=parents.mobile ";
+                    runQuery(query);
+                    break;                    
 
                 case "exit":
                     console.log('Program is now ending. Restart with npm start.')
