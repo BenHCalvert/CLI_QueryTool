@@ -76,4 +76,6 @@ Command Line: ![Picture of terminal results for Query 6](/assets/pictures/Q6Term
 
 **Result:**  
 Workbench: ![Picture of MySql results for Bonus 1](/assets/pictures/bonus.png)  
-Command Line: ![Picture of terminal results for Bonus 1](/assets/pictures/bonusTerm.png)
+Command Line: ![Picture of terminal results for Bonus 1](/assets/pictures/BonusTerm.png)  
+
+

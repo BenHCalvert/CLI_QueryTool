@@ -68,7 +68,7 @@ function runSearch() {
 
 
                 case "exit":
-                    console.log('Program is now ending. Restart with node start.')
+                    console.log('Program is now ending. Restart with npm start.')
                     connection.end();                    
                     break;
             }

@@ -66,7 +66,7 @@ function runSearch() {
                     var query = "SELECT staff.staff_id, staff.firstName, staff.lastName FROM staff INNER JOIN sections ON staff.staff_id=sections.staff_id;";
                     runQuery(query);
                     break;
-                
+
                 case "Print a language mapping for all the language codes in the parents.csv file that correspond to ISO-629-1":
                     var query = "SELECT DISTINCT parents.language, langCodes.alphaCode FROM parents LEFT JOIN langCodes ON parents.language=langCodes.engName ORDER BY language ASC;";
                     runQuery(query);
@@ -74,18 +74,18 @@ function runSearch() {
 
                 case "exit":
                     console.log('Program is now ending. Restart with npm start.')
-                    connection.end();                    
+                    connection.end();
                     break;
             }
         });
 }
 
 // Function to run query and print response to console
-function runQuery(query) {    
+function runQuery(query) {
     connection.query(query, function (err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log(JSON.stringify(res[i]));            
+            console.log(JSON.stringify(res[i]));
         }
         runSearch();
     });
