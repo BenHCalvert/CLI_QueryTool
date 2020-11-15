@@ -1,4 +1,4 @@
-How to run the code:
+How to run the application:
 
 1. Download this directory and open in your terminal.
 2. You must have [Node.js](https://nodejs.org/) installed.
